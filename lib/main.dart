@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes/Screens/coming_soon.dart';
-import 'package:notes/Screens/donate_economists.dart';
+import 'package:notes/Screens/donate_economists_main.dart';
 import 'package:notes/Screens/end.dart';
 import 'package:notes/Screens/phone_verification.dart';
 import 'package:notes/Screens/send_verification.dart';
