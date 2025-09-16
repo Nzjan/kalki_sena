@@ -68,6 +68,9 @@ flutter:
     - assets/images/donate_page/first_aid.png
     - assets/images/donate_page/fb.png
     - assets/images/donate_page/youtube.png
+    - assets/logout.png
+    - assets/delete_account.png
+   
 
 
   # The following line ensures that the Material Icons font is
