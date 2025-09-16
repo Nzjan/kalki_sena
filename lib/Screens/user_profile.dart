@@ -102,32 +102,32 @@ class UserProfile extends StatelessWidget {
 
             SizedBox(height: 24),
             buildInfoRowWithImage(
-              "assets/user_profile/membership_id.png",
+              "assets/images/user_profile/membership_id.png",
               "Membership ID",
             ),
             SizedBox(height: 12),
             buildInfoRowWithImage(
-              "assets/user_profile/my_subscription.png",
+              "assets/images/user_profile/my_subscription.png",
               "My Subscription",
             ),
             SizedBox(height: 12),
             buildInfoRowWithImage(
-              "assets/user_profile/settings.png",
+              "assets/images/user_profile/settings.png",
               "Settings",
             ),
             SizedBox(height: 12),
             buildInfoRowWithImage(
-              "assets/user_profile/terms_conditions.png",
+              "assets/images/user_profile/terms_conditions.png",
               "Terms & Conditions",
             ),
             SizedBox(height: 12),
             buildInfoRowWithImage(
-              "assets/user_profile/account_management.png",
+              "assets/images/user_profile/account_management.png",
               "Account Management",
             ),
             SizedBox(height: 12),
             buildInfoRowWithImage(
-              "assets/user_profile/privacy_policy.png",
+              "assets/images/user_profile/privacy_policy.png",
               "Privacy Policy",
             ),
             SizedBox(height: 12),

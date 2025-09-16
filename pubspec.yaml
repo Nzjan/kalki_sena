@@ -64,6 +64,10 @@ flutter:
     - assets/images/user_profile/terms_conditions.png
     - assets/images/coming_soon/people.png
     - assets/images/coming_soon/close.png
+    - assets/images/donate_page/like.png
+    - assets/images/donate_page/first_aid.png
+    - assets/images/donate_page/fb.png
+    - assets/images/donate_page/youtube.png
 
 
   # The following line ensures that the Material Icons font is
