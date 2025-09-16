@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes/Screens/coming_soon.dart';
+import 'package:notes/Screens/donate_economists.dart';
 import 'package:notes/Screens/end.dart';
 import 'package:notes/Screens/phone_verification.dart';
 import 'package:notes/Screens/send_verification.dart';
@@ -36,16 +37,6 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              child: Text('Set new Password'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SetNewPassword()),
-                );
-              },
-            ),
-            SizedBox(height: 5),
-            ElevatedButton(
               child: Text('User Profile'),
               onPressed: () {
                 Navigator.push(
@@ -56,7 +47,18 @@ class HomePage extends StatelessWidget {
             ),
             SizedBox(height: 5),
             ElevatedButton(
-              child: Text('Send Verification'),
+              child: Text('Reset Password'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SetNewPassword()),
+                );
+              },
+            ),
+            SizedBox(height: 5),
+
+            ElevatedButton(
+              child: Text('Email or Phone Verification'),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -66,7 +68,7 @@ class HomePage extends StatelessWidget {
             ),
             SizedBox(height: 5),
             ElevatedButton(
-              child: Text('Phone Verification'),
+              child: Text('OTP Verification'),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -91,6 +93,16 @@ class HomePage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => ComingSoonLayout()),
+                );
+              },
+            ),
+            SizedBox(height: 5),
+            ElevatedButton(
+              child: Text('Donate to economists'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DonatePage()),
                 );
               },
             ),

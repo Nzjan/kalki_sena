@@ -44,24 +44,22 @@ class _EndPageState extends State<EndPage> with SingleTickerProviderStateMixin {
           onPressed: () => Navigator.pop(context),
           icon: const Icon(Icons.arrow_back, color: Colors.white, size: 24),
         ),
-        title: const Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 8.0,
-          ), // Add left/right padding
-          child: Text(
-            "Do national and in college/university survey",
-            style: TextStyle(
-              color: Color(0xfff5f5f5),
-              fontWeight: FontWeight.w400,
-              fontSize: 16,
-              fontStyle: FontStyle.normal,
-              fontFamily: 'SFPro',
-            ),
+        title: const Text(
+          "Do national and in college/university survey",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Color(0xfff5f5f5),
+            fontWeight: FontWeight.w400,
+            fontSize: 16,
+            fontStyle: FontStyle.normal,
+            fontFamily: 'SFPro',
           ),
         ),
+        centerTitle: true,
         backgroundColor: const Color(0xff020B17),
         toolbarHeight: 64,
       ),
+
       body: Align(
         alignment: Alignment.topCenter,
         child: SlideTransition(
