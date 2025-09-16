@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// end
+// add Commit(),
 class EndPage extends StatefulWidget {
   const EndPage({super.key});
 
