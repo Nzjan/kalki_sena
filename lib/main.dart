@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes/Screens/coming_soon.dart';
 import 'package:notes/Screens/end.dart';
 import 'package:notes/Screens/phone_verification.dart';
 import 'package:notes/Screens/send_verification.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Kalki',
       debugShowCheckedModeBanner: false,
-      home: EndPage(),
+      home: HomePage(),
     );
   }
 }
@@ -70,6 +71,26 @@ class HomePage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => PhoneVerification()),
+                );
+              },
+            ),
+            SizedBox(height: 5),
+            ElevatedButton(
+              child: Text('end'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => EndPage()),
+                );
+              },
+            ),
+            SizedBox(height: 5),
+            ElevatedButton(
+              child: Text('Coming Soon'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ComingSoonLayout()),
                 );
               },
             ),

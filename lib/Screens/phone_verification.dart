@@ -101,7 +101,8 @@ class _PhoneVerificationState extends State<PhoneVerification> {
         backgroundColor: Color(0xff020B17),
         toolbarHeight: 52,
       ),
-      body: SafeArea(
+      body: Align(
+        alignment: Alignment.topCenter,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
