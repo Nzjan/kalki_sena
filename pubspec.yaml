@@ -72,7 +72,9 @@ flutter:
     - assets/images/qr_page/share.png
     - assets/logout.png
     - assets/delete_account.png
-   
+    - assets/images/payment_method/esewa.png
+    - assets/images/payment_method/khalti.png
+    - assets/images/payment_method/bank.png
 
 
   # The following line ensures that the Material Icons font is

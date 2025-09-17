@@ -71,7 +71,6 @@ class DonatePage extends StatelessWidget {
             ),
             const SizedBox(height: 24),
 
-            // Buttons with navigation
             _buildActionButton(
               imagePath: 'assets/images/donate_page/like.png',
               text: "१ रुपैयाँ १५ भाग बनाउने रोक अभियान ।",
