@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class DonatePageOP2 extends StatelessWidget {
   const DonatePageOP2({super.key});
 
+  static const Color backgroundColor = Color(0xff020B17);
   static const TextStyle appBarTitleStyle = TextStyle(
     color: Color(0xfff5f5f5),
     fontWeight: FontWeight.w500,
@@ -12,16 +13,53 @@ class DonatePageOP2 extends StatelessWidget {
 
   static const TextStyle bodyTextStyle = TextStyle(
     color: Color(0xfff5f5f5),
-    fontSize: 14,
-    height: 1.4,
+    fontSize: 16,
     fontFamily: 'SFPro',
   );
+
+  static const TextStyle boldTextStyle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+    fontFamily: 'SFPro',
+  );
+
+  Widget numberedItem(int number, InlineSpan content) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 12.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("$number.", style: bodyTextStyle),
+          const SizedBox(width: 8),
+          Expanded(child: Text.rich(content)),
+        ],
+      ),
+    );
+  }
+
+  Widget bulletItem(String text) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 8.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text("•", style: bodyTextStyle),
+          const SizedBox(width: 8),
+          Expanded(child: Text(text, style: bodyTextStyle)),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff020B17),
+      backgroundColor: backgroundColor,
       appBar: AppBar(
+        backgroundColor: backgroundColor,
+        toolbarHeight: 64,
+        centerTitle: true,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: const Icon(Icons.arrow_back, color: Colors.white, size: 24),
@@ -30,11 +68,7 @@ class DonatePageOP2 extends StatelessWidget {
           "Sign up to drive with Kalki Sena Ride",
           style: appBarTitleStyle,
         ),
-        centerTitle: true,
-        backgroundColor: const Color(0xff020B17),
-        toolbarHeight: 64,
       ),
-
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -44,121 +78,181 @@ class DonatePageOP2 extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: const Text(
-                        "Driver Benefits",
-                        style: DonatePageOP2.bodyTextStyle,
+                    const Text("Driver Benefits:", style: bodyTextStyle),
+
+                    // Benefit 1
+                    numberedItem(
+                      1,
+                      const TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "१००% भाडा आफ्नो: ",
+                            style: boldTextStyle,
+                          ),
+                          TextSpan(
+                            text:
+                                "ड्राइभरहरूले पिकअपदेखि ड्रपसम्मको सम्पूर्ण पैसा आफैं राख्नेछन्।",
+                            style: bodyTextStyle,
+                          ),
+                        ],
                       ),
                     ),
 
-                    // Item 1
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text("1.", style: bodyTextStyle),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: const Text(
-                            "Driver Benefits: This section will describe the main benefits of signing up as a driver for Kalki Sena Ride, including earnings, incentives, and flexible schedule.",
+                    // Benefit 2
+                    numberedItem(
+                      2,
+                      const TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "निःशुल्क क्लिनिक उपचार: ",
+                            style: boldTextStyle,
+                          ),
+                          TextSpan(
+                            text: "अधिकतम ५०० डलरसम्मको सुविधा (१००० होइन)।",
                             style: bodyTextStyle,
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                    const SizedBox(height: 16),
 
-                    // Item 2
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text("2.", style: bodyTextStyle),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: const Text(
-                            "स्मार्ट करेन्सी के हो? नेपालका १०० वटा भन्दा बढी अर्थशास्त्रीहरुद्वारा पूर्ण रूपमा सैद्धान्तिक छलफलबाट समर्थित नयाँ प्रविधि जसले ३–४ वर्षभित्रमा नेपाललाई विश्वकै पहिलो १००% क्यासलेस र विश्वकै पहिलो सामाजिक र राजनीतिक रूपमा ९०% भ्रष्टाचारमुक्त राष्ट्र बनाउनेछ। यस प्रविधिमा पैसामाथि बारकोड राखिनु पर्छ र प्रत्येक परिवारका लागि १ देखि १००० सम्मका सबै खाले अलग-अलग नम्बरको करेन्सी हुनेछ। बारकोड प्रविधिको कारणले गाउँका पढ्न-लेख्न नजान्ने मान्छेले पनि नगदविहीन खरिद-बिक्री बिना इन्टरनेट र बिना फोन गर्न पाउनेछ। एउटा पाइलट प्रोजेक्ट गर्न ५–७ वटा दुर्गम गाउँमा थोरै बारकोड भएको नगद छापेर पुराना चलनचल्तीका पैसाहरू नहटाई पूरै रोडम्याप तयार गर्न सकिन्छ।",
+                    // Benefit 3
+                    numberedItem(
+                      3,
+                      const TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "प्रमोशनको जिम्मेवारी: ",
+                            style: boldTextStyle,
+                          ),
+                          TextSpan(
+                            text:
+                                "ड्राइभरहरूले आफ्नै खर्चमा प्रचार–प्रसार गर्नुपर्नेछ।",
                             style: bodyTextStyle,
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                    const SizedBox(height: 16),
 
-                    // Item 3
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text("3.", style: bodyTextStyle),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: const Text(
-                            "एन्टिबायोटिक रेसिस्टेन्स: ब्याक्टेरिया (bacteria) लगायत विभिन्न रोगजनक जीवाणुको कारणले औषधि पूर्ण रूपमा असर नपुग्ने, त्यसबाट संक्रमित मानिसको जीवन संकटमा पर्नु। यसमा नियन्त्रणको लागि राष्ट्रिय स्तरमा नीति बनाउने र प्रयोगात्मक अनुसन्धान अघि बढाउने।",
-                            style: bodyTextStyle,
+                    // Benefit 4 - Sub-bullets
+                    Padding(
+                      padding: const EdgeInsets.only(top: 12),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text("4.", style: bodyTextStyle),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  "भविष्यका सुविधा:",
+                                  style: bodyTextStyle,
+                                ),
+                                bulletItem(
+                                  "२ वर्षपछि निःशुल्क अस्पताल उपचार (यदि अरू कुनै प्रतिस्पर्धी कम्पनी बाँकी रहेन भने)।",
+                                ),
+                                bulletItem(
+                                  "५ वर्षपछि बच्चाहरूलाई निःशुल्क स्कुल र अस्पताल सुविधा (यदि केवल कल्कि सेना राइड मात्र बाँकी रहेमा)।",
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
+
+                    // Benefit 5 - Sub-bullets
+                    Padding(
+                      padding: const EdgeInsets.only(top: 12),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text("5.", style: bodyTextStyle),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  "सुरक्षा धितो:",
+                                  style: bodyTextStyle,
+                                ),
+                                bulletItem(
+                                  "बाइक चालकका लागि १०,००० रुपैयाँभन्दा कम।",
+                                ),
+                                bulletItem(
+                                  "ट्याक्सी चालकका लागि २०,००० रुपैयाँभन्दा कम।",
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
                     const SizedBox(height: 24),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: const Text(
-                        "Driver Benefits",
-                        style: DonatePageOP2.bodyTextStyle,
+
+                    const Text("नयाँ प्रयास :", style: bodyTextStyle),
+
+                    numberedItem(
+                      1,
+                      const TextSpan(
+                        text:
+                            "हाम्रो एप मा सरकार को नियम अनुसार प्रत्येक किलो मीटर मा कति चार्ज हुनु पर्छ त्यो देखाउन तपाईं को ट्याक्सी जस्तै मीटर राखिने छ त्यो एप को नाम हुन्छ कानून मीटर . हामी कानून मीटर को व्यवस्था ल्याएर सबै ड्राइभर लाई एक गर्ने छौ ड्राइभर एक हुने न हुने त्यो तपाईं को इच्छा I",
+                        style: bodyTextStyle,
                       ),
                     ),
 
-                    // Item 1
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text("1.", style: bodyTextStyle),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: const Text(
-                            "Driver Benefits: This section will describe the main benefits of signing up as a driver for Kalki Sena Ride, including earnings, incentives, and flexible schedule.",
-                            style: bodyTextStyle,
-                          ),
-                        ),
-                      ],
+                    numberedItem(
+                      2,
+                      const TextSpan(
+                        text:
+                            "डाक्टर हरुको जीवन स्तर उकास्ने र ५० लाख भन्दा बढी नेपाली लाई मर्न बाट बचाउन हाम्रो क्लिनिक को मेम्बर लाई अहिले को पठाउ कै रेट लाग्ने छ जो मेम्बर छैन् उसलाई ट्याक्सी कानून मीटर को रेट लाग्ने छ I",
+                        style: bodyTextStyle,
+                      ),
                     ),
-                    const SizedBox(height: 16),
 
-                    // Item 2
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text("2.", style: bodyTextStyle),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: const Text(
-                            "स्मार्ट करेन्सी के हो? नेपालका १०० वटा भन्दा बढी अर्थशास्त्रीहरुद्वारा पूर्ण रूपमा सैद्धान्तिक छलफलबाट समर्थित नयाँ प्रविधि जसले ३–४ वर्षभित्रमा नेपाललाई विश्वकै पहिलो १००% क्यासलेस र विश्वकै पहिलो सामाजिक र राजनीतिक रूपमा ९०% भ्रष्टाचारमुक्त राष्ट्र बनाउनेछ। यस प्रविधिमा पैसामाथि बारकोड राखिनु पर्छ र प्रत्येक परिवारका लागि १ देखि १००० सम्मका सबै खाले अलग-अलग नम्बरको करेन्सी हुनेछ। बारकोड प्रविधिको कारणले गाउँका पढ्न-लेख्न नजान्ने मान्छेले पनि नगदविहीन खरिद-बिक्री बिना इन्टरनेट र बिना फोन गर्न पाउनेछ। एउटा पाइलट प्रोजेक्ट गर्न ५–७ वटा दुर्गम गाउँमा थोरै बारकोड भएको नगद छापेर पुराना चलनचल्तीका पैसाहरू नहटाई पूरै रोडम्याप तयार गर्न सकिन्छ।",
-                            style: bodyTextStyle,
-                          ),
-                        ),
-                      ],
+                    numberedItem(
+                      3,
+                      const TextSpan(
+                        text:
+                            "दैनिक खर्च घटाउने लक्ष्य: सबै ड्राइभरहरू एकजुट भएमा दैनिक खर्च ३५०० रुपैयाँबाट २५०० रुपैयाँमा ल्याउने अध्ययन गर्ने।",
+                        style: bodyTextStyle,
+                      ),
                     ),
-                    const SizedBox(height: 16),
-
-                    // Item 3
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text("3.", style: bodyTextStyle),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: const Text(
-                            "एन्टिबायोटिक रेसिस्टेन्स: ब्याक्टेरिया (bacteria) लगायत विभिन्न रोगजनक जीवाणुको कारणले औषधि पूर्ण रूपमा असर नपुग्ने, त्यसबाट संक्रमित मानिसको जीवन संकटमा पर्नु। यसमा नियन्त्रणको लागि राष्ट्रिय स्तरमा नीति बनाउने र प्रयोगात्मक अनुसन्धान अघि बढाउने।",
-                            style: bodyTextStyle,
-                          ),
-                        ),
-                      ],
+                    numberedItem(
+                      4,
+                      const TextSpan(
+                        text:
+                            "आफ्नो गाडी चलाउने र ट्याक्सी साहु को गाडी चलाउने को कमाई प्रतेक ट्रिप मा बराबर हुने छ।  आफ्नो गाडी चलाउने को कमाई मा कुनै कमी आउने छैन I",
+                        style: bodyTextStyle,
+                      ),
+                    ),
+                    numberedItem(
+                      5,
+                      const TextSpan(
+                        text:
+                            "टिप्सको विकल्प: आफैं कार नभई दैनिक २५००–३५०० रुपैयाँ ट्याक्सी मालिकलाई तिरेर सवारी चलाउने ड्राइभरहरूका लागि एपमार्फत टिप्स लिन सक्ने व्यवस्था।",
+                        style: bodyTextStyle,
+                      ),
+                    ),
+                    numberedItem(
+                      3,
+                      const TextSpan(
+                        text:
+                            "भिन्न मूल्यको व्यवस्था: दैनिक ३०००–३५०० रुपैयाँ ट्याक्सी मालिकलाई तिर्ने ड्राइभरहरूका लागि विशेष प्रावधान राखिनेछ। "
+                            "यस्ता ड्राइभरहरूको सम्मानजनक आम्दानी सुनिश्चित गर्न, "
+                            "उनीहरू कति छन् र एकजुट हुन तयार छन् वा छैनन् भन्ने बुझ्न आवश्यक छ।",
+                        style: bodyTextStyle,
+                      ),
                     ),
                   ],
                 ),
               ),
             ),
 
-            // Verify Button
+            // Pre-Verify Button
             Container(
               width: double.infinity,
               height: 54,

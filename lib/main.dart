@@ -3,6 +3,7 @@ import 'package:notes/Screens/coming_soon.dart';
 import 'package:notes/Screens/donate_economists_main.dart';
 import 'package:notes/Screens/end.dart';
 import 'package:notes/Screens/phone_verification.dart';
+import 'package:notes/Screens/qr_page.dart';
 import 'package:notes/Screens/send_verification.dart';
 import 'package:notes/Screens/set_new_password.dart';
 import 'package:notes/Screens/user_profile.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Kalki',
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: QrPage(),
     );
   }
 }

@@ -68,6 +68,8 @@ flutter:
     - assets/images/donate_page/first_aid.png
     - assets/images/donate_page/fb.png
     - assets/images/donate_page/youtube.png
+    - assets/images/qr_page/download.png
+    - assets/images/qr_page/share.png
     - assets/logout.png
     - assets/delete_account.png
    
