@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
+// ignore: constant_identifier_names
 enum PaymentMethod { eSewa, Khalti, Bank }
 
 void showPaymentMethodBottomSheet(BuildContext context) {
   PaymentMethod selectedMethod = PaymentMethod.eSewa;
   bool bankExpanded = false;
-
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -29,88 +29,108 @@ void showPaymentMethodBottomSheet(BuildContext context) {
                 padding: const EdgeInsets.all(16),
                 child: Column(
                   children: [
-                    // Drag handle
-                    Container(
-                      width: 40,
-                      height: 5,
-                      margin: const EdgeInsets.only(bottom: 10),
-                      decoration: BoxDecoration(
-                        color: Colors.grey[700],
-                        borderRadius: BorderRadius.circular(2.5),
-                      ),
-                    ),
-
-                    // Title & close button
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text(
                           "Select Payment Method",
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Color(0xfff5f5f5),
                             fontSize: 18,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'SFPro',
+                            fontStyle: FontStyle.normal,
                           ),
                         ),
                         IconButton(
-                          icon: const Icon(Icons.close, color: Colors.white),
+                          icon: const Icon(
+                            Icons.close,
+                            color: Color(0xff747474),
+                            size: 15,
+                          ),
                           onPressed: () => Navigator.pop(context),
                         ),
                       ],
                     ),
-                    const Divider(color: Colors.white30),
-
+                    const SizedBox(height: 12),
                     // eSewa option
-                    ListTile(
-                      leading: Image.asset(
-                        'assets/images/payment_method/esewa.png',
-                        width: 24,
-                        height: 24,
-                        fit: BoxFit.contain,
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Color(0xffe0e0e0),
+                            width: 0.3,
+                          ),
+                        ),
                       ),
-                      title: const Text(
-                        "eSewa Mobile Wallet",
-                        style: TextStyle(color: Colors.white),
+                      child: ListTile(
+                        contentPadding: const EdgeInsets.symmetric(
+                          vertical: 14,
+                        ),
+                        leading: Image.asset(
+                          'assets/images/payment_method/esewa.png',
+                          width: 45,
+                          height: 45,
+                          fit: BoxFit.contain,
+                        ),
+                        title: const Text(
+                          "eSewa Mobile Wallet",
+                          style: TextStyle(
+                            color: Color(0xfff5f5f5),
+                            fontFamily: 'Poppins',
+                            fontStyle: FontStyle.normal,
+                            fontSize: 16,
+                          ),
+                        ),
+                        trailing:
+                            selectedMethod == PaymentMethod.eSewa
+                                ? const Icon(
+                                  Icons.check_circle,
+                                  color: Color(0xff2A5CAA),
+                                  size: 20,
+                                )
+                                : const Icon(
+                                  Icons.radio_button_unchecked,
+                                  color: Color(0xff2A5CAA),
+                                  size: 20,
+                                ),
+                        onTap: () {
+                          setState(() {
+                            selectedMethod = PaymentMethod.eSewa;
+                            bankExpanded = false;
+                          });
+                        },
                       ),
-                      trailing:
-                          selectedMethod == PaymentMethod.eSewa
-                              ? const Icon(
-                                Icons.check_circle,
-                                color: Colors.green,
-                              )
-                              : const Icon(
-                                Icons.radio_button_unchecked,
-                                color: Colors.white,
-                              ),
-                      onTap: () {
-                        setState(() {
-                          selectedMethod = PaymentMethod.eSewa;
-                          bankExpanded = false;
-                        });
-                      },
                     ),
-
                     // Khalti option
                     ListTile(
+                      contentPadding: const EdgeInsets.symmetric(vertical: 14),
                       leading: Image.asset(
                         'assets/images/payment_method/khalti.png',
-                        width: 24,
-                        height: 24,
+                        width: 45,
+                        height: 45,
                         fit: BoxFit.contain,
                       ),
                       title: const Text(
                         "Khalti Mobile Wallet",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(
+                          color: Color(0xfff5f5f5),
+                          fontFamily: 'Poppins',
+                          fontStyle: FontStyle.normal,
+                          fontSize: 16,
+                        ),
                       ),
                       trailing:
                           selectedMethod == PaymentMethod.Khalti
                               ? const Icon(
                                 Icons.check_circle,
-                                color: Colors.green,
+                                color: Color(0xff2A5CAA),
+                                size: 20,
                               )
                               : const Icon(
                                 Icons.radio_button_unchecked,
-                                color: Colors.white,
+                                color: Color(0xff2A5CAA),
+                                size: 20,
                               ),
                       onTap: () {
                         setState(() {
@@ -119,104 +139,110 @@ void showPaymentMethodBottomSheet(BuildContext context) {
                         });
                       },
                     ),
-
-                    // ... earlier parts (eSewa & Khalti) remain same
-                    const SizedBox(height: 16), // separation between categories
-                    // Bank section without tick
-                    ListTile(
-                      leading: Image.asset(
-                        'assets/images/payment_method/bank.png', // your bank icon
-                        width: 24,
-                        height: 24,
-                        fit: BoxFit.contain,
-                      ),
-                      title: const Text(
-                        "Bank Detail For Foreign Donation",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      trailing: Icon(
-                        bankExpanded
-                            ? Icons.keyboard_arrow_up
-                            : Icons.keyboard_arrow_down,
-                        color: Colors.white,
-                      ),
-                      onTap: () {
-                        setState(() {
-                          selectedMethod = PaymentMethod.Bank;
-                          bankExpanded = !bankExpanded;
-                        });
-                      },
-                    ),
-
-                    if (selectedMethod == PaymentMethod.Bank && bankExpanded)
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 8,
-                        ),
-                        margin: const EdgeInsets.only(bottom: 16),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF2A2A2A),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text(
-                              "Receiver’s Full Name: Kalkism Research Center",
-                              style: TextStyle(color: Colors.white70),
-                            ),
-                            SizedBox(height: 4),
-                            Text(
-                              "Bank Name: Global IME Bank",
-                              style: TextStyle(color: Colors.white70),
-                            ),
-                            SizedBox(height: 4),
-                            Text(
-                              "Branch: Lagankhel",
-                              style: TextStyle(color: Colors.white70),
-                            ),
-                            SizedBox(height: 4),
-                            Text(
-                              "Bank Account Number: 154879563164797",
-                              style: TextStyle(color: Colors.white70),
-                            ),
-                            SizedBox(height: 4),
-                            Text(
-                              "Mobile Number: 9841123463",
-                              style: TextStyle(color: Colors.white70),
-                            ),
-                          ],
-                        ),
-                      ),
-
-                    const Spacer(),
-
-                    SizedBox(
-                      width: double.infinity,
-                      height: 48,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                "Payment via ${selectedMethod.toString().split('.').last} initiated",
-                              ),
-                            ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
+                    // Bank option
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Color(0xffe0e0e0),
+                            width: 0.3,
                           ),
                         ),
-                        child: const Text(
-                          "Pay Now",
-                          style: TextStyle(fontSize: 16, color: Colors.white),
-                        ),
                       ),
+                      child: ListTile(
+                        contentPadding: const EdgeInsets.symmetric(
+                          vertical: 14,
+                        ),
+                        leading: Image.asset(
+                          'assets/images/payment_method/bank.png',
+                          width: 45,
+                          height: 45,
+                          fit: BoxFit.contain,
+                        ),
+                        title: const Text(
+                          "Bank Detail For Foreign Donation",
+                          style: TextStyle(
+                            color: Color(0xfff5f5f5),
+                            fontFamily: 'Poppins',
+                            fontStyle: FontStyle.normal,
+                            fontSize: 16,
+                          ),
+                        ),
+                        trailing: Icon(
+                          bankExpanded
+                              ? Icons.keyboard_arrow_up
+                              : Icons.keyboard_arrow_down,
+                          color: Color(0xff2A5CAA),
+                          size: 20,
+                        ),
+                        onTap: () {
+                          setState(() {
+                            selectedMethod = PaymentMethod.Bank;
+                            bankExpanded = !bankExpanded;
+                          });
+                        },
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    // Show bank details if expanded
+                    if (selectedMethod == PaymentMethod.Bank && bankExpanded)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          _InfoRow(
+                            label: "Receiver’s Full Name",
+                            value: "Kalkism Research Center",
+                          ),
+                          SizedBox(height: 4),
+                          _InfoRow(
+                            label: "Bank Name",
+                            value: "Global IME Bank",
+                          ),
+                          SizedBox(height: 4),
+                          _InfoRow(label: "Branch", value: "Lagankhel"),
+                          SizedBox(height: 4),
+                          _InfoRow(
+                            label: "Bank Account Number",
+                            value: "154879563164797",
+                          ),
+                          SizedBox(height: 4),
+                          _InfoRow(label: "Mobile Number", value: "9841123463"),
+                        ],
+                      ),
+                    const SizedBox(height: 12),
+                    // Make Payment Button - Responsive Size
+                    LayoutBuilder(
+                      builder: (context, constraints) {
+                        return SizedBox(
+                          width: double.infinity,
+                          height: 48,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    "Payment via ${selectedMethod.toString().split('.').last} initiated",
+                                  ),
+                                ),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.blue,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                            child: const Text(
+                              "Pay Now",
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -227,4 +253,46 @@ void showPaymentMethodBottomSheet(BuildContext context) {
       );
     },
   );
+}
+
+class _InfoRow extends StatelessWidget {
+  final String label;
+  final String value;
+
+  const _InfoRow({required this.label, required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          flex: 5,
+          child: Text(
+            label,
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w500,
+              fontSize: 16,
+              fontFamily: 'Poppins',
+              fontStyle: FontStyle.normal,
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 5,
+          child: Text(
+            ": $value",
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w400,
+              fontSize: 16,
+              fontFamily: 'Poppins',
+              fontStyle: FontStyle.normal,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }
