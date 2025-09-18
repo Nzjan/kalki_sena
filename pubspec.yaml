@@ -65,6 +65,7 @@ flutter:
     - assets/images/coming_soon/people.png
     - assets/images/coming_soon/close.png
     - assets/images/donate_page/like.png
+    - assets/images/donate_page/register.png
     - assets/images/donate_page/first_aid.png
     - assets/images/donate_page/fb.png
     - assets/images/donate_page/youtube.png

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:notes/Screens/coming_soon.dart';
 import 'package:notes/Screens/donate_economists_main.dart';
+import 'package:notes/Screens/donate_economists_op1.dart';
+import 'package:notes/Screens/donate_economists_op2.dart';
+import 'package:notes/Screens/donate_economists_op3.dart';
 import 'package:notes/Screens/end.dart';
+import 'package:notes/Screens/find_passenger.dart';
 import 'package:notes/Screens/payment_method.dart';
 import 'package:notes/Screens/phone_verification.dart';
+import 'package:notes/Screens/qr_page.dart';
 import 'package:notes/Screens/send_verification.dart';
 import 'package:notes/Screens/set_new_password.dart';
 import 'package:notes/Screens/user_profile.dart';
@@ -102,7 +107,7 @@ class HomePage extends StatelessWidget {
                 },
               ),
               ElevatedButton(
-                child: const Text('Donate to Economists'),
+                child: const Text('Donate to Economists main'),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -110,9 +115,7 @@ class HomePage extends StatelessWidget {
                   );
                 },
               ),
-              const SizedBox(height: 10),
 
-              // 🔘 NEW: Make Payment Button
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 177, 198, 214),
@@ -123,6 +126,59 @@ class HomePage extends StatelessWidget {
                   'Make Payment',
                   style: TextStyle(color: Colors.black),
                 ),
+              ),
+              ElevatedButton(
+                child: const Text('Donate to Economists op1'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const DonatePageOP1(),
+                    ),
+                  );
+                },
+              ),
+              ElevatedButton(
+                child: const Text('Donate to Economists op2'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const DonatePageOP2(),
+                    ),
+                  );
+                },
+              ),
+              ElevatedButton(
+                child: const Text('Donate to Economists op3'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const DonatePageOP3(),
+                    ),
+                  );
+                },
+              ),
+              ElevatedButton(
+                child: const Text('qr page'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const QrPage()),
+                  );
+                },
+              ),
+              ElevatedButton(
+                child: const Text('find t, b, and passenger page'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const FindPassenger(),
+                    ),
+                  );
+                },
               ),
             ],
           ),
