@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:notes/Screens/donate_economists_op1.dart';
-import 'package:notes/atkai/animation_end.dart';
 
 // Your DonatePage
 class FindPassenger extends StatelessWidget {
@@ -74,14 +73,6 @@ This service will be active after 4–6 months.''',
                     MaterialPageRoute(builder: (_) => const DonatePageOP1()),
                   ),
             ),
-            const EndPage(),
-            // Center(
-            //   child: Image.asset(
-            //     'assets/images/coming_soon/close.png',
-            //     width: 291,
-            //     height: 231,
-            //   ),
-            // ),
           ],
         ),
       ),

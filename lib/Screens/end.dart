@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-// add Commit(),
 class EndPage extends StatefulWidget {
   const EndPage({super.key});
 
@@ -22,8 +21,11 @@ class _EndPageState extends State<EndPage> with SingleTickerProviderStateMixin {
     );
 
     _animation = Tween<Offset>(
-      begin: const Offset(0, -1), // Slide from top
-      end: const Offset(0, 0), // To original position
+      begin: const Offset(
+        0,
+        -1,
+      ), // Slide from top of the image container (not whole screen)
+      end: Offset.zero,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic));
 
     _controller.forward();
@@ -59,17 +61,37 @@ class _EndPageState extends State<EndPage> with SingleTickerProviderStateMixin {
         backgroundColor: const Color(0xff020B17),
         toolbarHeight: 64,
       ),
-
-      body: Align(
-        alignment: Alignment.topCenter,
-        child: SlideTransition(
-          position: _animation,
-          child: Image.asset(
-            'assets/images/coming_soon/close.png',
-            width: 291,
-            height: 231,
+      body: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // const Text(
+          //   "",
+          //   textAlign: TextAlign.center,
+          //   style: TextStyle(
+          //     color: Color(0xfff5f5f5),
+          //     fontWeight: FontWeight.w400,
+          //     fontSize: 16,
+          //     fontStyle: FontStyle.normal,
+          //     fontFamily: 'SFPro',
+          //   ),
+          // ),
+          Align(
+            alignment: Alignment.topCenter,
+            child: SizedBox(
+              height: 231,
+              child: ClipRect(
+                child: SlideTransition(
+                  position: _animation,
+                  child: Image.asset(
+                    'assets/images/coming_soon/close.png',
+                    width: 291,
+                    height: 231,
+                  ),
+                ),
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

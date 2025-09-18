@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 
-/// This widget contains only the animation (for reuse)
-class EndPageBody extends StatefulWidget {
-  final bool startAnimation; // control when to start animation
-  const EndPageBody({super.key, this.startAnimation = false});
+class EndPage extends StatefulWidget {
+  const EndPage({super.key});
 
   @override
-  State<EndPageBody> createState() => _EndPageBodyState();
+  State<EndPage> createState() => _EndPageState();
 }
 
-class _EndPageBodyState extends State<EndPageBody>
-    with SingleTickerProviderStateMixin {
+class _EndPageState extends State<EndPage> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _animation;
 
@@ -23,24 +20,19 @@ class _EndPageBodyState extends State<EndPageBody>
       duration: const Duration(milliseconds: 2000),
     );
 
+    // Calculate the starting offset based on image height
+    double imageHeight = 231.0; // Image height
+    double startOffset = imageHeight; // Start below the screen
+
     _animation = Tween<Offset>(
-      begin: const Offset(0, -1), // Slide from top
-      end: const Offset(0, 0), // Final position
+      begin: Offset(0, startOffset), // Start below the screen
+      end: Offset(
+        0,
+        0,
+      ), // End at the position where the top part of the image is visible
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic));
 
-    // Start animation only if startAnimation is true
-    if (widget.startAnimation) {
-      _controller.forward();
-    }
-  }
-
-  @override
-  void didUpdateWidget(covariant EndPageBody oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    // Start animation if startAnimation changed from false → true
-    if (!oldWidget.startAnimation && widget.startAnimation) {
-      _controller.forward();
-    }
+    _controller.forward();
   }
 
   @override
@@ -48,23 +40,6 @@ class _EndPageBodyState extends State<EndPageBody>
     _controller.dispose();
     super.dispose();
   }
-
-  @override
-  Widget build(BuildContext context) {
-    return SlideTransition(
-      position: _animation,
-      child: Image.asset(
-        'assets/images/coming_soon/close.png',
-        width: 291,
-        height: 231,
-      ),
-    );
-  }
-}
-
-/// Full EndPage with Scaffold + AppBar
-class EndPage extends StatelessWidget {
-  const EndPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -77,10 +52,12 @@ class EndPage extends StatelessWidget {
         ),
         title: const Text(
           "Do national and in college/university survey",
+          textAlign: TextAlign.center,
           style: TextStyle(
             color: Color(0xfff5f5f5),
             fontWeight: FontWeight.w400,
             fontSize: 16,
+            fontStyle: FontStyle.normal,
             fontFamily: 'SFPro',
           ),
         ),
@@ -88,11 +65,16 @@ class EndPage extends StatelessWidget {
         backgroundColor: const Color(0xff020B17),
         toolbarHeight: 64,
       ),
-      body: const Align(
+      body: Align(
         alignment: Alignment.topCenter,
-        child: EndPageBody(
-          startAnimation: true,
-        ), // Start immediately in full page
+        child: SlideTransition(
+          position: _animation,
+          child: Image.asset(
+            'assets/images/coming_soon/close.png',
+            width: 291,
+            height: 231,
+          ),
+        ),
       ),
     );
   }
