@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes/Screens/donate_economists_op1.dart';
+import 'package:notes/Screens/sliding_image.dart'; // This must contain SlidingImageWidget
 
-// Your DonatePage
 class FindPassenger extends StatelessWidget {
   const FindPassenger({super.key});
 
@@ -67,11 +67,16 @@ This service will be active after 4–6 months.''',
             _buildActionButton(
               imagePath: 'assets/images/donate_page/like.png',
               text: "Register as Driver",
-              onTap:
-                  () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const DonatePageOP1()),
-                  ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const DonatePageOP1()),
+                );
+              },
+            ),
+
+            SlidingImageWidget(
+              imagePath: 'assets/images/coming_soon/close.png',
             ),
           ],
         ),
@@ -82,7 +87,7 @@ This service will be active after 4–6 months.''',
   Widget _buildActionButton({
     required String imagePath,
     required String text,
-    required VoidCallback onTap, // Pass navigation callback
+    required VoidCallback onTap,
   }) {
     return InkWell(
       onTap: onTap,

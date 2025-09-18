@@ -4,13 +4,13 @@ import 'package:notes/Screens/donate_economists_main.dart';
 import 'package:notes/Screens/donate_economists_op1.dart';
 import 'package:notes/Screens/donate_economists_op2.dart';
 import 'package:notes/Screens/donate_economists_op3.dart';
-import 'package:notes/Screens/end.dart';
 import 'package:notes/Screens/find_passenger.dart';
 import 'package:notes/Screens/payment_method.dart';
 import 'package:notes/Screens/phone_verification.dart';
 import 'package:notes/Screens/qr_page.dart';
 import 'package:notes/Screens/send_verification.dart';
 import 'package:notes/Screens/set_new_password.dart';
+import 'package:notes/Screens/sliding_image.dart';
 import 'package:notes/Screens/user_profile.dart';
 
 void main() {
@@ -87,11 +87,16 @@ class HomePage extends StatelessWidget {
                 },
               ),
               ElevatedButton(
-                child: const Text('End'),
+                child: const Text('Sliding image coming soon'),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const EndPage()),
+                    MaterialPageRoute(
+                      builder:
+                          (context) => SlidingImageWidget(
+                            imagePath: 'assets/images/coming_soon/close.png',
+                          ),
+                    ),
                   );
                 },
               ),
